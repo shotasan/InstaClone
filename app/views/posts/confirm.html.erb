@@ -1,0 +1,11 @@
+<h3>投稿確認</h3>
+
+<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+  <%= form.hidden_field :text %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :image_cache %>
+
+  <p><%= image_tag @post.image.url %></p>
+  <p><%= @post.text %></p>
+  <%= form.submit "登録する" %>
+<% end %>
