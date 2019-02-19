@@ -3,4 +3,5 @@
   <p><%= post.text %></p>
   <%# 画像がnilの場合でもエラーにならないようにunlessを追加 %>
   <P><%= image_tag post.image.url unless post.image.blank?%></p>
+  <%= link_to "編集", edit_post_path(post.id) %>
 <% end %>
