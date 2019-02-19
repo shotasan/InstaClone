@@ -1,0 +1,6 @@
+<h1>一覧</h1>
+<% @post.each do |post| %>
+  <p><%= post.text %></p>
+  <%# 画像がnilの場合でもエラーにならないようにunlessを追加 %>
+  <P><%= image_tag post.image.url unless post.image.blank?%></p>
+<% end %>
