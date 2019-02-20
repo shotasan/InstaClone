@@ -5,4 +5,5 @@
   <P><%= image_tag post.image.url unless post.image.blank?%></p>
   <%= link_to "編集", edit_post_path(post.id) %>
   <%= link_to "削除", post_path(post.id), method: :delete %>
+  <%= link_to "詳細", post_path(post.id) %>
 <% end %>

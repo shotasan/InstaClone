@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only:[:edit,:update,:destroy]
+  before_action :set_post, only:[:show,:edit,:update,:destroy]
 
   def index
     @post = Post.all
@@ -11,14 +11,23 @@ class PostsController < ApplicationController
 
   def confirm
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
   end
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       PostedConfirmationMailer.posted_confirmation(@post).deliver
       redirect_to posts_path, notice:"投稿に成功しました"
+    else
+      binding.pry
+      redirect_to new_post_path
     end
+  end
+
+  def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
   def edit
