@@ -1,5 +1,7 @@
 <h1>詳細画面</h1>
-<%= @post.text %>
+<p><%= @post.user.name %>
+<p><%= @post.text %></p>
+<p><%= image_tag @post.image.url %></p>
 
 <%# お気に入りボタンの表示 %>
 <%# 自分の投稿には表示されない %>
@@ -10,3 +12,5 @@
     <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+
+<%= link_to '戻る', :back %>

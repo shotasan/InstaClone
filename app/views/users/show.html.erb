@@ -5,4 +5,15 @@
   <p>メールアドレス: <%= @user.email %></p>
   <%= link_to "編集", edit_user_path(@user.id) %>
   <%= link_to "お気に入り一覧", favorites_path %>
+  
+  
+  <%#= link_to "詳細", post_path(post.id) %>
+<% end %>
+
+<h1>自分の投稿</h1>
+<% @user.posts.each do |my_post| %>
+  <p><%= my_post.text %></p>
+  <p><%= image_tag my_post.image.url %></p>
+  <%= link_to "編集", edit_post_path(my_post.id) %>
+  <%= link_to "削除", post_path(my_post.id), method: :delete %>
 <% end %>

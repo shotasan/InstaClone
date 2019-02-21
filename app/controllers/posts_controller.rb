@@ -15,8 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
     if @post.save
       PostedConfirmationMailer.posted_confirmation(@post).deliver
       redirect_to posts_path, notice:"投稿に成功しました"
@@ -26,7 +25,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
@@ -40,14 +38,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_path
   end
-
 
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def post_params
