@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show,:edit,:update]
+
   def new
     @user = User.new
   end
@@ -8,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "登録に成功しました"
-      # 登録成功後にshowアクションで詳細画面に飛ぶ
       redirect_to user_path(@user.id)
     else
       render "new"

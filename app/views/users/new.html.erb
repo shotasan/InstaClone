@@ -1,35 +1,35 @@
-<h1>Sign up</h1>
+<h1>新規アカウント</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
   <%# エラーメッセージの表示%>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+      <h2><%= @user.errors.count %>件のエラーがあります。</h2>
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <p>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
   </p>
   <p>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </p>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
   <p>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
   </p>
   <p>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </p>
-  <%= f.submit "Create my account" %>
+    <%= f.submit "アカウントを作成" %>
 <% end %>

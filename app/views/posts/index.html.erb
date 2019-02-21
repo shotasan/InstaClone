@@ -2,6 +2,5 @@
 <% @post.each do |post| %>
   <p><%= post.user.name %></p>
   <p><%= post.text %></p>
-  <%# 画像がnilの場合でもエラーにならないようにunlessを追加 %>
-  <P><%= image_tag post.image.url unless post.image.blank?%></p>
+  <P><%= image_tag post.image.url %></p>
 <% end %>

@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if params[:back]
+      @post = Post.new(post_params)
+    else
+      @post = Post.new
+    end
   end
 
   def confirm
@@ -33,12 +37,12 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    redirect_to posts_path
+    redirect_to posts_path, notice:"編集に成功しました"
   end
 
   def destroy
     @post.destroy
-    redirect_to user_path
+    redirect_to user_path, notice:"削除に成功しました"
   end
 
   private
