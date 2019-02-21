@@ -10,8 +10,8 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
+    render :new if @post.invalid?
   end
 
   def create
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       PostedConfirmationMailer.posted_confirmation(@post).deliver
       redirect_to posts_path, notice:"投稿に成功しました"
     else
-      redirect_to new_post_path
+      render :new
     end
   end
 
