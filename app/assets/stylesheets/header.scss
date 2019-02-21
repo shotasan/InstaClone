@@ -1,0 +1,23 @@
+.top_menu {
+  float: right;
+}
+
+.top_menu li {
+  float: left;
+  padding: 15px;
+  list-style: none;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.header_logo {
+  float: left;
+}
+
+.header {
+  background-color: pink;
+}

@@ -1,0 +1,7 @@
+<h1>一覧</h1>
+<% @favorites.each do |fav| %>
+  <p><%= fav.post.user.name %></p>
+  <p><%= fav.post.text %></p>
+  <%# 画像がnilの場合でもエラーにならないようにunlessを追加 %>
+  <P><%= image_tag fav.post.image.url unless fav.post.image.blank?%></p>
+<% end %>

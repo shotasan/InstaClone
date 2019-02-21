@@ -9,24 +9,26 @@
   </head>
 
   <body>
-    <%# flashメッセージの表示%>
-    <% flash.each do |key, value| %>
-      <%# content_tagはタグを動的に生成 %>
-      <%# divタグで囲み、受け取ったvalueを表示。classは:dangerや:alertが入る%>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
     
-    <%# ヘッダーの内容をログイン中かどうかで分岐 %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <%= link_to "NewPost", new_post_path %>
-      <%= link_to "PostIndex", posts_path %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
+    <header class="header clearfix">
+        <%= render 'layouts/header' %>
+    </header>
 
-    <%= yield %>
+    <div class="container">
+
+      <%# flashメッセージの表示%>
+      <% flash.each do |key, value| %>
+        <%# content_tagはタグを動的に生成 %>
+        <%# divタグで囲み、受け取ったvalueを表示。classは:dangerや:alertが入る%>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      
+      <%= yield %>
+
+    </div>
+    
+    <footer class="footer">
+        <p>Copyright © 2018 All RIGHTS RESERVED.</p>
+    </footer>
   </body>
 </html>
