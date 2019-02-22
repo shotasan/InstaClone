@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#new" 
+  root "posts#index" 
   resources :sessions, onlu:[:new,:create,:destroy]
   resources :users, only:[:new,:create,:show,:edit,:update]
   resources :favorites, only:[:index,:create,:destroy]

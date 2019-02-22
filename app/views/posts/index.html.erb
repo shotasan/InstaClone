@@ -3,4 +3,7 @@
   <p><%= post.user.name %></p>
   <p><%= post.text %></p>
   <P><%= image_tag post.image.url %></p>
+  <%#= binding.pry %>
+  <%= link_to '詳細', post_path(post.id) %>
+  
 <% end %>

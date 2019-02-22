@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      post: "投稿"
+      user: "ユーザー"
+    attributes:
+      post:
+        title: "タイトル"
+        text: "内容"
+      user:
+        title: "タイトル"
+        name: "名前"
+        Email: "メールアドレス"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        Password: "パスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+    views:
+      sessions:
+    attributes:
+      sessions:
+        Password: "パスワード"

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only:[:show,:edit,:update,:destroy]
+  before_action :set_post_info, only:[:show,:edit,:update,:destroy]
 
   def index
     @post = Post.all
@@ -33,6 +33,10 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.user_id != current_user.id
+      redirect_to user_path(current_user.id),
+      notice: "アクセス権限がありません"
+    end
   end
 
   def update
@@ -47,8 +51,8 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-    @post = current_user.posts.find(params[:id])
+  def set_post_info
+    @post = Post.find(params[:id])
   end
 
   def post_params

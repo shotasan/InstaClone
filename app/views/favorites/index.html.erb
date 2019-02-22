@@ -1,8 +1,12 @@
 <h1>お気に入り一覧</h1>
-<% @favorites.each do |fav| %>
-  <p><%= fav.post.user.name %></p>
-  <p><%= fav.post.text %></p>
-  <%# 画像がnilの場合でもエラーにならないようにunlessを追加 %>
-  <P><%= image_tag fav.post.image.url unless fav.post.image.blank?%></p>
-  <%= link_to "詳細", post_path(fav.post.id) %>
+<% if @favorites %>
+  <% @favorites.each do |fav| %>
+    <p><%= fav.post.user.name %></p>
+    <p><%= fav.post.text %></p>
+    <%# 画像がnilの場合でもエラーにならないようにunlessを追加 %>
+    <P><%= image_tag fav.post.image.url unless fav.post.image.blank?%></p>
+    <%= link_to "詳細", post_path(fav.post.id) %>
+  <% end %>
+<% else %>
+  <h2>お気に入りはありません</h2>
 <% end %>
