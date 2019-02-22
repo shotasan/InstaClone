@@ -40,8 +40,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    redirect_to posts_path, notice:"編集に成功しました"
+    if @post.update(post_params)
+      redirect_to posts_path, notice:"編集に成功しました"
+    else
+      render "edit"
+    end
   end
 
   def destroy

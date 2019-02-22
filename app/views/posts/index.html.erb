@@ -1,6 +1,6 @@
 <h1>一覧</h1>
 <% @post.each do |post| %>
-  <div class="card" >
+  <div class="card">
     <div class="card-body">
       <p class="card-user"><%= post.user.name %></p>
       <span ><%= image_tag post.user.image, class:"profile_img" %></span>
