@@ -18,6 +18,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'faker'
 gem 'rails-i18n', '~> 5.1'
+gem 'letter_opener_web'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
