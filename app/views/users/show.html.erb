@@ -1,4 +1,5 @@
-<%= form_with(model: @user, local: true) do |form| %>
+<h1>マイページ</h1>
+<%= form_with(model: @user, local: true, class:"profile") do |form| %>
   <p>ユーザー名:<%= @user.name %></p>
   <p>プロフィール画像:<%= image_tag @user.image.url %></p>
   <p>メールアドレス: <%= @user.email %></p>

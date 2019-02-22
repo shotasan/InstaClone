@@ -1,9 +1,13 @@
 <h1>一覧</h1>
 <% @post.each do |post| %>
-  <p><%= post.user.name %></p>
-  <p><%= post.text %></p>
-  <P><%= image_tag post.image.url %></p>
-  <%#= binding.pry %>
-  <%= link_to '詳細', post_path(post.id) %>
-  
+  <div class="card" >
+    <div class="card-body">
+      <p class="card-user"><%= post.user.name %></p>
+      <span ><%= image_tag post.user.image, class:"profile_img" %></span>
+      <span><%= post.created_at.strftime("%m月%d日%H:%M") %></span>
+      <p class="card-text"><%= post.text %></p>         
+    </div>
+    <%= image_tag post.image.url, class: "card-img-bottom" %>
+    <%= link_to '詳細', post_path(post.id) %>
+  </div>
 <% end %>

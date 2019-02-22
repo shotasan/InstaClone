@@ -1,6 +1,6 @@
 <%= form_with(model: @user, url: user_path(params[:id]), local: true) do |f| %>
-  <p>
   <%= image_tag @user.image.url %>
+  <p class="chose_image">
   <%= f.file_field :image %>
   </p>
   <p>
